@@ -5,8 +5,18 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      darkMode:'class'
+    },
   },
-  plugins: [],
+  plugins: [
+    function ({ addBase }) {
+    addBase({
+      // Nombre de la clase personalizada que deseas agregar
+      '.text-custom': {
+        fontSize: '50px',
+      },
+    })
+  },],
 }
 
