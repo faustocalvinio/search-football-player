@@ -43,6 +43,6 @@
 
 export const ThemeSwitcher = () => {
   return (
-    <div>ThemeSwitcher</div>
+    <span className="dark:text-white">ThemeSwitcher</span>
   )
 }
