@@ -1,4 +1,6 @@
-#
+# Search Football Player App
+This is a small project where you can search for a football player or coach, and it will display information on the screen from TheSportsDB API about that search.
+
 ## Table of contents
 
 - [Overview](#overview)
@@ -10,6 +12,12 @@
   - [Useful resources](#useful-resources)
 - [Author](#author)
 
+### Screenshot
+![Screenshot of the project](/src/assets/screenshot-08-oct.png)
+
+### Links
+
+[Live Demo](https://search-football-player-fcc.netlify.app/)
 
 ### Built with
 

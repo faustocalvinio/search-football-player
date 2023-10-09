@@ -1,10 +1,12 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { testPlayerData } from './mocks/player';
 import messiMockImage from './mocks/messi-thumb.jpg';
 import Modal from 'react-modal';
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import { ThemeSwitcher } from "./components/ThemeSwitcher";
+import { MainCard } from "./components/MainCard";
+import { data } from "autoprefixer";
 const images2=[
   {original:'./mocks/fanart-1.png',thumbnail:'./mocks/fanart-1.png'},
   {original:'./mocks/fanart-2.png',thumbnail:'./mocks/fanart-2.png'},
@@ -31,6 +33,7 @@ Modal.setAppElement('#root');
 
 function App() {
   const [textModalStatus, setTextModalStatus] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   // const [images, setImages] = useState(images23)
   const [galleryModalStatus, setGalleryModalStatus] = useState(false)
   const inputValue = useRef();
@@ -44,15 +47,21 @@ function App() {
   }
   const [playerData, setPlayerData] = useState(testPlayerData)
 
-  console.log(playerData.player[0].strFanart1);
+  // console.log(playerData.player[0].strFanart1);
 
   const onSearchSubmit = (e)=>{
+    setIsLoading(true)
     e.preventDefault()
     console.log("submit")
     try {
       fetch(`https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=${inputValue.current.value}`)
       .then(res => res.json())
-      .then(data => setPlayerData(data))
+      .then(data => {
+        setPlayerData(data)
+        setIsLoading(false)
+      })
+      // .then(()=>setIsLoading(false))
+      
       console.log(playerData);
 
     } catch (error) {
@@ -61,6 +70,15 @@ function App() {
     
     inputValue.current.value='';
   }
+
+  useEffect(() => {
+    
+  }, [playerData])
+  
+  useEffect(() => {
+    console.log(isLoading);
+  }, [isLoading])
+  
 
   // const textShort = playerData.player !== null || playerData.player[0].strSport === 'Soccer' ?  playerData.player[0].strDescriptionEN.slice(0,400) : ''
   return (
@@ -76,18 +94,19 @@ function App() {
       <button type="submit" className="bg-blue-700 text-white p-2 rounded-lg w-[20%] dark:bg-blue-900 dark:hover:bg-blue-800"  >Search</button>
       </form>
       {
-        playerData.player===null || playerData.player[0].strSport !== 'Soccer' ? <h1 className="text-5xl font-extrabold dark:text-white">No results found</h1> : (
+        playerData.player===null || playerData.player[0].strSport !== 'Soccer'  
+        ? <h1 className="text-5xl font-extrabold dark:text-white">No results found</h1> 
+        : 
        
 
           
-          <main className="bg-gray-800 relative flex flex-col p-4 rounded-lg mt-9 mb-8 shadow-lg text-white text-center w-full max-w-[600px] mx-auto border-2 border-red-700/50 gap-3">
+          <main className="bg-gray-400 dark:bg-gray-800 relative flex flex-col p-4 rounded-lg mt-9 mb-8 shadow-lg text-white text-center w-full max-w-[600px] mx-auto border-2 border-red-700/50 gap-3">
        
         <h1 className="text-5xl font-extrabold dark:text-white">{ JSON.stringify(playerData.player[0].strPlayer)  }</h1>
 
         
         <h4 className="text-2xl underline underline-offset-3 decoration-2 decoration-blue-600 dark:decoration-blue-300">{playerData.player[0].strPosition}</h4>
-        {/* <h4 className="absolute left-[-40px] top-[-60px] rotate-[-45deg] text-[80px]">{playerData.player[0].strNumber}</h4> */}
-        {/* <h4 className="absolute right-[-40px] top-[-60px] rotate-[45deg] text-[80px]">{playerData.player[0].strNumber}</h4> */}
+        
         <p className="text-lg">{ playerData.player[0].strStatus==="Active" ? 'Active ✅' : 'Retired ❌' }</p>
         <p><strong>Nationality:</strong> {playerData.player[0].strNationality}</p>
         <p><strong>Place and date of birth:</strong> {playerData.player[0].strBirthLocation}📍 , {playerData.player[0].dateBorn} 📅</p>
@@ -120,8 +139,7 @@ function App() {
           />
 
         </Modal>
-        <p>{playerData.player[0].strDescriptionEN.slice(0,400)} ...</p>
-        {/* <p>{textShort}</p> */}
+        <p>{playerData.player[0].strDescriptionEN.slice(0,400)} ...</p>        
         <button className="bg-red-600 border-0 py-2 px-4 w-fit mx-auto dark:bg-blue-700 dark:hover:bg-blue-600" onClick={toggleTextModal}>Read More</button>
         <Modal
           isOpen={textModalStatus}
@@ -132,8 +150,9 @@ function App() {
         </Modal>
       </main>
       
-        )
+        
       }
+      {isLoading ? <h1 className="text-white">Loading</h1> : <h2 className="text-white">Loaded</h2>}
       <footer className=""> <p className="text-center dark:text-white">Made with React and  <a href="https://www.thesportsdb.com/" target="_blank" rel="noreferrer" className="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">TheSportsDB</a>. Source code of this project <a href="https://github.com/faustocalvinio/search-football-player" target="_blank" rel="noreferrer"  className="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">here</a>.</p>  </footer>
     </div>
     </>
