@@ -44,4 +44,27 @@ export const testPlayerData = {
             "strFanart4": "https://www.thesportsdb.com/images/media/player/fanart/icrnu31549398274.jpg",            
         },       
     ]
-}
+};
+export const images23 = [
+    {
+      original: "https://picsum.photos/id/1018/1000/600/",
+      thumbnail: "https://picsum.photos/id/1018/250/150/",
+    },
+    {
+      original: "https://picsum.photos/id/1015/1000/600/",
+      thumbnail: "https://picsum.photos/id/1015/250/150/",
+    },
+    {
+      original: "https://picsum.photos/id/1019/1000/600/",
+      thumbnail: "https://picsum.photos/id/1019/250/150/",
+    },
+];
+
+export const images2=[
+    {original:'./mocks/fanart-1.png',thumbnail:'./mocks/fanart-1.png'},
+    {original:'./mocks/fanart-2.png',thumbnail:'./mocks/fanart-2.png'},
+    {original:'./mocks/fanart-3.png',thumbnail:'./mocks/fanart-3.png'},
+    {original:'./mocks/fanart-4.png',thumbnail:'./mocks/fanart-4.png'},
+    {original:'./mocks/fanart-5.png',thumbnail:'./mocks/fanart-5.png'},
+    
+];
