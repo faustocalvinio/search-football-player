@@ -13,7 +13,7 @@ This is a small project where you can search for a football player or coach, and
 - [Author](#author)
 
 ### Screenshot
-![Screenshot of the project](/src/assets/screenshot-08-oct.png)
+![Screenshot of the project](/src/assets/screenshot-16-oct.png)
 
 ### Links
 
