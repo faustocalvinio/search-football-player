@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import ImageGallery from "react-image-gallery";
 import Modal from 'react-modal';
 
@@ -38,17 +38,11 @@ function App() {
       });      
     } catch (error) {
       console.log(error);
-    }
-    
+    }    
     inputValue.current.value='';
   };
-
-  useEffect(() => {   
-  }, [playerData])
   
-  useEffect(() => {    
-  }, [isLoading]) 
-
+ 
   
   return (
     <>   
@@ -63,7 +57,7 @@ function App() {
         </form>
         {
           playerData.player===null || playerData.player[0].strSport !== 'Soccer'  
-          ? <h1 className="text-5xl font-extrabold dark:text-sky-50">No results found</h1> 
+          ? (<main className="bg-sky-200 border-sky-950 dark:bg-sky-900 relative  flex-col p-4 rounded-lg mt-2 mb-8 shadow-lg text-sky-900 text-center w-full max-w-[600px] min-h-[70vh] flex justify-center items-center mx-auto border-2 dark:border-sky-600 gap-3 max-md:w-[90%] dark:text-sky-50"><h1 className="text-5xl font-extrabold dark:text-sky-50">No results found 😞</h1></main> )
           : 
           <main className="bg-sky-200 border-sky-950 dark:bg-sky-900 relative flex flex-col p-4 rounded-lg mt-2 mb-8 shadow-lg text-sky-900 text-center w-full max-w-[600px] mx-auto border-2 dark:border-sky-600 gap-3 max-md:w-[90%] dark:text-sky-50">
 

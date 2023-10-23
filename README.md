@@ -3,14 +3,11 @@ This is a small project where you can search for a football player or coach, and
 
 ## Table of contents
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
+- [Overview](#overview)  
   - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
-  - [Built with](#built-with)  
-  - [Useful resources](#useful-resources)
-- [Author](#author)
+  - [Built with](#built-with)    
 
 ### Screenshot
 ![Screenshot of the project](/src/assets/screenshot-16-oct.png)
@@ -21,8 +18,8 @@ This is a small project where you can search for a football player or coach, and
 
 ### Built with
 
-- [React Image Gallery](https://www.npmjs.com/package/react-image-gallery)
-- [React Modal](https://www.npmjs.com/package/react-modal)
-- CSS custom properties
-- JavaScript
-- Flexbox
+- [React](https://react.dev/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Vite](https://vitejs.dev/)
+- [react-modal](https://github.com/reactjs/react-modal)
+- [react-image-gallery](https://github.com/xiaolin/react-image-gallery)
